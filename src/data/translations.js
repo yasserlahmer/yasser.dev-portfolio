@@ -1,0 +1,156 @@
+export const translations = {
+  fr: {
+    nav: {
+      home: 'Accueil',
+      about: 'À propos',
+      skills: 'Compétences',
+      projects: 'Projets',
+      experience: 'Expérience',
+      contact: 'Contact',
+    },
+    hero: {
+      greeting: 'Salut, je suis',
+      name: 'Yasser',
+      quote: 'L’IMAGINATION EST PLUS IMPORTANTE QUE LE SAVOIR',
+      title: 'Développeur Web & Jeux',
+      subtitle: 'Spécialiste Front-end | Créateur d’expériences immersives',
+      cta: 'Voir mes projets',
+      contact: 'Me contacter',
+    },
+    about: {
+      title: 'À propos de moi',
+      description: `Développeur passionné basé à Moncton, Canada. Expert en Front-end avec une forte affinité pour le Web et le développement de Jeux. 
+      D'origine marocaine, je fusionne créativité et technique pour bâtir des interfaces modernes et des mondes interactifs. 
+      Maîtrisant React, JavaScript, C++, et Arduino, je transforme des idées complexes en expériences utilisateur fluides et captivantes.`,
+      stats: {
+        projects: 'Projets',
+        experience: 'Années d\'exp.',
+        technologies: 'Technologies',
+        coffee: 'Cafés bus',
+      },
+    },
+    skills: {
+      title: 'Compétences',
+      subtitle: 'Technologies que je maîtrise',
+      categories: {
+        languages: 'Langages',
+        frameworks: 'Frameworks',
+        tools: 'Outils',
+        hardware: 'Hardware',
+      },
+    },
+    projects: {
+      title: 'Mes Projets',
+      subtitle: 'Découvrez mes créations',
+      viewProject: 'Voir le projet',
+      viewCode: 'Code source',
+      all: 'Tous',
+      games: 'Jeux',
+      web: 'Web',
+      hardware: 'Hardware',
+      status: {
+        completed: 'Complet',
+        working: 'En cours',
+      },
+    },
+    experience: {
+      title: 'Expérience',
+      subtitle: 'Mon parcours professionnel',
+    },
+    contact: {
+      title: 'Contact',
+      subtitle: 'Travaillons ensemble',
+      name: 'Nom',
+      email: 'Email',
+      message: 'Message',
+      send: 'Envoyer',
+      sending: 'Envoi en cours...',
+      success: 'Message envoyé avec succès!',
+      error: 'Une erreur est survenue. Veuillez réessayer.',
+      location: 'Moncton, Canada',
+      phone: 'Téléphone',
+    },
+    footer: {
+      rights: 'Tous droits réservés',
+      madeWith: 'Fait avec',
+      by: 'par Yasser',
+    },
+  },
+  en: {
+    nav: {
+      home: 'Home',
+      about: 'About',
+      skills: 'Skills',
+      projects: 'Projects',
+      experience: 'Experience',
+      contact: 'Contact',
+    },
+    hero: {
+      greeting: 'Hi, I\'m',
+      name: 'Yasser',
+      quote: 'IMAGINATION IS MORE IMPORTANT THAN KNOWLEDGE',
+      title: 'Web & Game Developer',
+      subtitle: 'Front-end Specialist | Creating Immersive Experiences',
+      cta: 'View my projects',
+      contact: 'Contact me',
+    },
+    about: {
+      title: 'About Me',
+      description: `Passionate developer based in Moncton, Canada. Front-end expert with a strong affinity for both Web and Game development. 
+      Originally from Morocco, I merge technical skill with creative vision to build modern interfaces and interactive worlds. 
+      Proficient in React, JavaScript, C++, and Arduino, I turn complex ideas into fluid, engaging user experiences.`,
+      stats: {
+        projects: 'Projects',
+        experience: 'Years exp.',
+        technologies: 'Technologies',
+        coffee: 'Coffees drunk',
+      },
+    },
+    skills: {
+      title: 'Skills',
+      subtitle: 'Technologies I master',
+      categories: {
+        languages: 'Languages',
+        frameworks: 'Frameworks',
+        tools: 'Tools',
+        hardware: 'Hardware',
+      },
+    },
+    projects: {
+      title: 'My Projects',
+      subtitle: 'Discover my creations',
+      viewProject: 'View project',
+      viewCode: 'Source code',
+      all: 'All',
+      games: 'Games',
+      web: 'Web',
+      hardware: 'Hardware',
+      status: {
+        completed: 'Completed',
+        working: 'Working on',
+      },
+    },
+    experience: {
+      title: 'Experience',
+      subtitle: 'My professional journey',
+    },
+    contact: {
+      title: 'Contact',
+      subtitle: 'Let\'s work together',
+      name: 'Name',
+      email: 'Email',
+      message: 'Message',
+      send: 'Send',
+      sending: 'Sending...',
+      success: 'Message sent successfully!',
+      error: 'An error occurred. Please try again.',
+      location: 'Moncton, Canada',
+      phone: 'Phone',
+    },
+    footer: {
+      rights: 'All rights reserved',
+      madeWith: 'Made with',
+      by: 'by Yasser',
+    },
+  },
+}

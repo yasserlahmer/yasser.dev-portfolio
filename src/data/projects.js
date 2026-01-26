@@ -1,0 +1,92 @@
+export const projects = [
+  {
+    id: 1,
+    title: {
+      fr: 'KAWS CAR',
+      en: 'KAWS CAR',
+    },
+    description: {
+      fr: 'Service premium de location de voitures à Casablanca, offrant une large gamme de véhicules de luxe 24/7.',
+      en: 'Premium car rental service in Casablanca, offering a wide range of luxury vehicles 24/7.',
+    },
+    image: '/images/projects/kawscar.jpg',
+    tags: ['React', 'Business', 'Rental'],
+    category: 'web',
+    liveUrl: 'https://www.kawscar.com',
+    githubUrl: '#',
+    featured: true,
+    isHosted: true,
+  },
+  {
+    id: 2,
+    title: {
+      fr: 'Laboratoire MAGHREB ARABI',
+      en: 'Laboratoire MAGHREB ARABI',
+    },
+    description: {
+      fr: 'Laboratoire d\'analyses médicales à Kénitra, spécialisé en biologie médicale et suivi personnalisé.',
+      en: 'Medical analysis laboratory in Kénitra, specializing in medical biology and personalized monitoring.',
+    },
+    image: '/images/projects/placeholder.jpg',
+    tags: ['React', 'Medical', 'Health'],
+    category: 'web',
+    liveUrl: 'https://labo-almaghrib-laarabi.vercel.app/',
+    githubUrl: '#',
+    featured: true,
+    isHosted: false,
+  },
+  {
+    id: 3,
+    title: {
+      fr: 'Abrys Studio',
+      en: 'Abrys Studio',
+    },
+    description: {
+      fr: 'Studio créatif pluridisciplinaire spécialisé dans le design et l\'expérience utilisateur.',
+      en: 'Multidisciplinary creative studio specializing in design and user experience.',
+    },
+    image: '/images/projects/placeholder.jpg',
+    tags: ['Next.js', 'Vercel', 'Creative'],
+    category: 'web',
+    liveUrl: 'https://abrysstudio.vercel.app/',
+    githubUrl: '#',
+    featured: true,
+    isHosted: false,
+  },
+  {
+    id: 4,
+    title: {
+      fr: 'AYMORENOV Construction',
+      en: 'AYMORENOV Construction',
+    },
+    description: {
+      fr: 'Entreprise spécialisée dans la construction et la rénovation résidentielle haut de gamme.',
+      en: 'Specializing in high-end residential construction and renovation services.',
+    },
+    image: '/images/projects/placeholder.jpg',
+    tags: ['Next.js', 'Construction', 'Professional'],
+    category: 'web',
+    liveUrl: 'https://www.aymorenov.ca',
+    githubUrl: '#',
+    featured: true,
+    isHosted: true,
+  },
+  {
+    id: 5,
+    title: {
+      fr: 'AB NailLounge',
+      en: 'AB NailLounge',
+    },
+    description: {
+      fr: 'Salon de manucure de luxe spécialisé en nail art, gel et soins des mains.',
+      en: 'Luxury nail salon specializing in nail art, gel, and hand care treatment.',
+    },
+    image: '/images/projects/placeholder.jpg',
+    tags: ['React', 'Salon', 'Design'],
+    category: 'web',
+    liveUrl: 'https://www.abnaillounge.ca',
+    githubUrl: '#',
+    featured: true,
+    isHosted: true,
+  },
+]
