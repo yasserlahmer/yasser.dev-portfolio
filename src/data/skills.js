@@ -12,10 +12,10 @@ import {
   SiVite,
   SiTailwindcss,
   SiPython,
-  SiRaspberrypi,
-  SiVisualstudiocode
+  SiRaspberrypi
 } from 'react-icons/si'
 import { FaGamepad } from 'react-icons/fa'
+import { VscCode } from 'react-icons/vsc'
 
 export const skills = {
   languages: [
@@ -35,7 +35,7 @@ export const skills = {
   ],
   tools: [
     { name: 'Git', icon: SiGit, level: 85, color: '#f05032' },
-    { name: 'VS Code', icon: SiVisualstudiocode, level: 95, color: '#007acc' },
+    { name: 'VS Code', icon: VscCode, level: 95, color: '#007acc' },
     { name: 'Unity', icon: SiUnity, level: 80, color: '#ffffff' },
   ],
   hardware: [
