@@ -70,6 +70,12 @@ export const translations = {
       location: 'Moncton, Canada',
       phone: 'Téléphone',
     },
+    certificates: {
+      title: 'Certificats',
+      subtitle: 'Mes certifications et formations',
+      viewCert: 'Voir le certificat',
+      issuedBy: 'Délivré par',
+    },
     footer: {
       rights: 'Tous droits réservés',
       madeWith: 'Fait avec',
@@ -146,6 +152,12 @@ export const translations = {
       error: 'An error occurred. Please try again.',
       location: 'Moncton, Canada',
       phone: 'Phone',
+    },
+    certificates: {
+      title: 'Certificates',
+      subtitle: 'My certifications and training',
+      viewCert: 'View certificate',
+      issuedBy: 'Issued by',
     },
     footer: {
       rights: 'All rights reserved',

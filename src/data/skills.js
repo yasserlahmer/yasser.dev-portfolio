@@ -19,15 +19,15 @@ import { VscCode } from 'react-icons/vsc'
 
 export const skills = {
   languages: [
-    { name: 'JavaScript', icon: SiJavascript, level: 90, color: '#f7df1e' },
+    { name: 'JavaScript', icon: SiJavascript, level: 90, color: '#f7df1e', certId: 'placeholder-1' },
     { name: 'C++', icon: SiCplusplus, level: 85, color: '#00599c' },
-    { name: 'HTML5', icon: SiHtml5, level: 95, color: '#e34f26' },
-    { name: 'CSS3', icon: SiCss3, level: 90, color: '#1572b6' },
+    { name: 'HTML5', icon: SiHtml5, level: 95, color: '#e34f26', certId: 'placeholder-1' },
+    { name: 'CSS3', icon: SiCss3, level: 90, color: '#1572b6', certId: 'placeholder-1' },
     { name: 'TypeScript', icon: SiTypescript, level: 75, color: '#3178c6' },
     { name: 'Python', icon: SiPython, level: 70, color: '#3776ab' },
   ],
   frameworks: [
-    { name: 'React', icon: SiReact, level: 90, color: '#61dafb' },
+    { name: 'React', icon: SiReact, level: 90, color: '#61dafb', certId: 'placeholder-1' },
     { name: 'Node.js', icon: SiNodedotjs, level: 80, color: '#339933' },
     { name: 'Vite', icon: SiVite, level: 85, color: '#646cff' },
     { name: 'Tailwind CSS', icon: SiTailwindcss, level: 90, color: '#06b6d4' },

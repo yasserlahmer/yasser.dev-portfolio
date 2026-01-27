@@ -3,6 +3,7 @@ import { useInView } from 'react-intersection-observer'
 import { useLanguage } from '../../context/LanguageContext'
 import { useTheme } from '../../context/ThemeContext'
 import { skills } from '../../data/skills'
+import { FiAward } from 'react-icons/fi'
 
 function SkillBar({ skill, index, isDark }) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -18,6 +19,17 @@ function SkillBar({ skill, index, isDark }) {
       <div className="flex items-center gap-3 mb-2">
         <skill.icon className="text-lg" style={{ color: skill.color }} />
         <span className={`font-medium ${isDark ? 'text-white' : 'text-dark'}`}>{skill.name}</span>
+        {skill.certId && (
+          <motion.a
+            href="#certificates"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="text-accent hover:text-accent-dark transition-colors"
+            title="Voir le certificat"
+          >
+            <FiAward className="text-sm" />
+          </motion.a>
+        )}
         <span className={`ml-auto text-sm font-mono ${isDark ? 'text-accent' : 'text-accent-dark'}`}>{skill.level}%</span>
       </div>
       <div className={`h-2.5 w-full rounded-full overflow-hidden ${isDark ? 'bg-white/10' : 'bg-dark/10'}`}>
