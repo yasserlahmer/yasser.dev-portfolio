@@ -40,14 +40,14 @@ export default function Contact() {
     {
       icon: FaPhone,
       label: t('contact.phone'),
-      value: '+1 506 377 0268',
-      href: 'tel:+15063770268',
+      value: '+1 506 377 2680',
+      href: 'tel:+15063772680',
     },
     {
       icon: FaWhatsapp,
       label: 'WhatsApp',
-      value: '+1 506 377 0268',
-      href: 'https://wa.me/15063770268',
+      value: '+1 506 377 2680',
+      href: 'https://wa.me/15063772680',
     },
     {
       icon: FaEnvelope,
