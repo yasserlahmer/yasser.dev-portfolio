@@ -1,9 +1,15 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaMapMarkerAlt, FaEnvelope, FaGithub, FaLinkedin, FaInstagram, FaPhone, FaWhatsapp } from 'react-icons/fa'
+import emailjs from '@emailjs/browser'
 import { useLanguage } from '../../context/LanguageContext'
 import { useTheme } from '../../context/ThemeContext'
 import Button from '../ui/Button'
+
+// EmailJS Configuration - Replace with your values from emailjs.com
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_id'
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_id'
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'public_key'
 
 export default function Contact() {
   const { t } = useLanguage()
@@ -23,12 +29,28 @@ export default function Contact() {
     e.preventDefault()
     setStatus('sending')
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Send email via EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_email: 'yasser99lahmer@gmail.com',
+        },
+        EMAILJS_PUBLIC_KEY
+      )
+
       setStatus('success')
       setFormData({ name: '', email: '', message: '' })
-      setTimeout(() => setStatus(null), 3000)
-    }, 1500)
+      setTimeout(() => setStatus(null), 5000)
+    } catch (error) {
+      console.error('Email send error:', error)
+      setStatus('error')
+      setTimeout(() => setStatus(null), 5000)
+    }
   }
 
   const contactInfo = [

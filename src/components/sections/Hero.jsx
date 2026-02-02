@@ -1,12 +1,25 @@
 import { motion } from 'framer-motion'
 import { FaArrowDown } from 'react-icons/fa'
+import { FiSettings } from 'react-icons/fi'
 import { useLanguage } from '../../context/LanguageContext'
 import { useTheme } from '../../context/ThemeContext'
+import { useAdmin } from '../../context/AdminContext'
+import { useContent } from '../../hooks/useContent'
 import Button from '../ui/Button'
 
 export default function Hero() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const { isDark } = useTheme()
+  const { editMode, openModal } = useAdmin()
+  const { content } = useContent()
+
+  // Use Firebase content if available, otherwise fallback to translations
+  const heroContent = {
+    name: content?.hero?.name || t('hero.name'),
+    greeting: content?.hero?.[`greeting_${language}`] || t('hero.greeting'),
+    title: content?.hero?.[`title_${language}`] || t('hero.title'),
+    quote: content?.hero?.[`quote_${language}`] || t('hero.quote')
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -89,6 +102,19 @@ export default function Hero() {
       </div>
 
       <div className="container mx-auto px-6 text-center relative z-10 py-20">
+        {/* Edit Content Button */}
+        {editMode && (
+          <motion.button
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            onClick={() => openModal('content')}
+            className="absolute top-24 right-6 z-30 flex items-center gap-2 px-4 py-2 bg-accent hover:bg-accent-dark text-white rounded-lg shadow-lg transition-all hover:scale-105"
+          >
+            <FiSettings className="w-4 h-4" />
+            <span className="font-medium">Edit Content</span>
+          </motion.button>
+        )}
+
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -100,7 +126,7 @@ export default function Hero() {
             variants={itemVariants}
             className="text-accent font-display font-medium tracking-[0.3em] uppercase text-sm mb-6"
           >
-            {t('hero.greeting')}
+            {heroContent.greeting}
           </motion.p>
 
           {/* Name */}
@@ -108,7 +134,7 @@ export default function Hero() {
             variants={itemVariants}
             className={`text-6xl md:text-8xl lg:text-9xl font-display font-black mb-8 tracking-tighter ${isDark ? 'text-white' : 'text-dark'}`}
           >
-            {t('hero.name')}<span className="text-accent">.</span>
+            {heroContent.name}<span className="text-accent">.</span>
           </motion.h1>
 
           {/* Quote - GIANT STYLE */}
@@ -117,7 +143,7 @@ export default function Hero() {
             className="max-w-4xl mb-12 relative"
           >
             <h2 className={`text-3xl md:text-5xl lg:text-6xl font-display font-black leading-tight uppercase ${isDark ? 'text-white' : 'text-dark'}`}>
-              {t('hero.quote')}
+              {heroContent.quote}
             </h2>
             <div className="w-24 h-1.5 bg-accent mx-auto mt-8 rounded-full" />
           </motion.div>
@@ -128,7 +154,7 @@ export default function Hero() {
             className="mb-12"
           >
             <p className={`text-lg md:text-xl font-medium tracking-wide uppercase ${isDark ? 'text-white/60' : 'text-dark/60'}`}>
-              {t('hero.title')}
+              {heroContent.title}
             </p>
           </motion.div>
 

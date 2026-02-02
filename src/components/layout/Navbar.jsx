@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
+import { FiSettings } from 'react-icons/fi'
 import { useLanguage } from '../../context/LanguageContext'
 import { useTheme } from '../../context/ThemeContext'
+import { useAdmin } from '../../context/AdminContext'
 import LanguageSwitch from './LanguageSwitch'
 import ThemeToggle from '../ui/ThemeToggle'
 
@@ -11,6 +14,20 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { t } = useLanguage()
   const { isDark } = useTheme()
+  const { isAdmin, editMode, setEditMode } = useAdmin()
+  const navigate = useNavigate()
+
+  // Secret keyboard shortcut: Ctrl + Shift + A to access admin
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+        e.preventDefault()
+        navigate('/ysr-x7k9')
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [navigate])
 
   const navItems = [
     { key: 'home', href: '#home' },
@@ -73,12 +90,45 @@ export default function Navbar() {
             ))}
             <ThemeToggle />
             <LanguageSwitch />
+
+            {/* Admin Button - Only visible when logged in */}
+            {isAdmin && (
+              <motion.button
+                onClick={() => setEditMode(!editMode)}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                  editMode
+                    ? 'bg-accent text-white'
+                    : isDark
+                      ? 'bg-white/10 text-white hover:bg-white/20'
+                      : 'bg-dark/10 text-dark hover:bg-dark/20'
+                }`}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+              >
+                <FiSettings className={`w-4 h-4 ${editMode ? 'animate-spin' : ''}`} style={{ animationDuration: '3s' }} />
+                <span>{editMode ? 'Editing' : 'Admin'}</span>
+              </motion.button>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-3">
             <ThemeToggle />
             <LanguageSwitch />
+            {isAdmin && (
+              <button
+                onClick={() => setEditMode(!editMode)}
+                className={`p-2 rounded-lg transition-all ${
+                  editMode
+                    ? 'bg-accent text-white'
+                    : isDark
+                      ? 'text-white/50 hover:text-white'
+                      : 'text-dark/50 hover:text-dark'
+                }`}
+              >
+                <FiSettings className={`w-5 h-5 ${editMode ? 'animate-spin' : ''}`} style={{ animationDuration: '3s' }} />
+              </button>
+            )}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`text-2xl ${isDark ? 'text-white' : 'text-dark'}`}
@@ -121,6 +171,8 @@ export default function Navbar() {
                   {t(`nav.${item.key}`)}
                 </motion.a>
               ))}
+
+              {/* Admin Link removed - use Ctrl+Shift+A to access */}
             </div>
           </motion.div>
         )}

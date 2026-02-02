@@ -1,36 +1,22 @@
-import Navbar from './components/layout/Navbar'
-import Footer from './components/layout/Footer'
-import Hero from './components/sections/Hero'
-import About from './components/sections/About'
-import Skills from './components/sections/Skills'
-import Projects from './components/sections/Projects'
-import Experience from './components/sections/Experience'
-import Certificates from './components/sections/Certificates'
-import Contact from './components/sections/Contact'
-import { useTheme } from './context/ThemeContext'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import { AdminProvider } from './context/AdminContext';
+import Home from './pages/Home';
+import Login from './pages/admin/Login';
 
 function App() {
-  const { isDark } = useTheme()
-
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-dark' : 'bg-light'}`}>
-      {/* Navigation */}
-      <Navbar />
-
-      {/* Main Content */}
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Certificates />
-        <Contact />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+    <AuthProvider>
+      <AdminProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            {/* Secret admin route - access via Ctrl+Shift+A */}
+            <Route path="/ysr-x7k9" element={<Login />} />
+          </Routes>
+        </Router>
+      </AdminProvider>
+    </AuthProvider>
   )
 }
 
