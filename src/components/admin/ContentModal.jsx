@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiUpload } from 'react-icons/fi';
-import { db, storage } from '../../config/firebase';
+import { db } from '../../config/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { imageToDataUrl } from '../../utils/imageToDataUrl';
 import { useAdmin } from '../../context/AdminContext';
 import AdminInput from '../ui/AdminInput';
 
@@ -112,10 +112,7 @@ const ContentModal = ({ onSuccess }) => {
     const uploadImage = async () => {
         if (!imageFile) return formData.about.profileImage;
 
-        const fileName = `profile/${Date.now()}-${imageFile.name}`;
-        const storageRef = ref(storage, fileName);
-        await uploadBytes(storageRef, imageFile);
-        return await getDownloadURL(storageRef);
+        return await imageToDataUrl(imageFile);
     };
 
     const handleSubmit = async (e) => {
@@ -142,7 +139,7 @@ const ContentModal = ({ onSuccess }) => {
             closeModal();
         } catch (error) {
             console.error("Error saving content:", error);
-            alert('Error saving content');
+            alert(`Error saving content: ${error.code || ''} ${error.message || error}`);
         }
         setSaving(false);
     };
@@ -280,7 +277,7 @@ const ContentModal = ({ onSuccess }) => {
                                                     <img src={imagePreview} alt="Profile" className="w-full h-full object-cover" />
                                                     <button
                                                         type="button"
-                                                        onClick={() => { setImageFile(null); setImagePreview(null); }}
+                                                        onClick={() => { setImageFile(null); setImagePreview(null); handleChange('about', 'profileImage', ''); }}
                                                         className="absolute top-2 right-2 p-1 bg-red-500/80 hover:bg-red-500 text-white rounded-full"
                                                     >
                                                         <FiX className="w-3 h-3" />

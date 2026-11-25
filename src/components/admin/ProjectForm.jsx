@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { db, storage } from '../../config/firebase';
+import { db } from '../../config/firebase';
 import { collection, addDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { imageToDataUrl } from '../../utils/imageToDataUrl';
 import { FiUpload, FiX } from 'react-icons/fi';
 import AdminCard from '../ui/AdminCard';
 import AdminInput from '../ui/AdminInput';
@@ -46,10 +46,7 @@ const ProjectForm = () => {
 
         setUploading(true);
         try {
-            const fileName = `projects/${Date.now()}-${imageFile.name}`;
-            const storageRef = ref(storage, fileName);
-            await uploadBytes(storageRef, imageFile);
-            const downloadURL = await getDownloadURL(storageRef);
+            const downloadURL = await imageToDataUrl(imageFile);
             setUploading(false);
             return downloadURL;
         } catch (error) {

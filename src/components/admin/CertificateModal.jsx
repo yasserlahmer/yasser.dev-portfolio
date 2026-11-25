@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiUpload } from 'react-icons/fi';
-import { db, storage } from '../../config/firebase';
+import { db } from '../../config/firebase';
 import { collection, addDoc, doc, updateDoc, deleteDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { imageToDataUrl } from '../../utils/imageToDataUrl';
 import { useAdmin } from '../../context/AdminContext';
 import AdminInput from '../ui/AdminInput';
 
@@ -70,10 +70,7 @@ const CertificateModal = ({ onSuccess }) => {
     const uploadImage = async () => {
         if (!imageFile) return formData.image;
 
-        const fileName = `certificates/${Date.now()}-${imageFile.name}`;
-        const storageRef = ref(storage, fileName);
-        await uploadBytes(storageRef, imageFile);
-        return await getDownloadURL(storageRef);
+        return await imageToDataUrl(imageFile);
     };
 
     const handleSubmit = async (e) => {
